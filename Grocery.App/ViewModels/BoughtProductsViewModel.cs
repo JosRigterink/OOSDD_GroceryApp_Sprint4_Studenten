@@ -24,17 +24,12 @@ namespace Grocery.App.ViewModels
             Products = new(productService.GetAll());
 
             Debug.WriteLine("vullen");
-            // Vervang comments met functionele code om de lijst bij het opstarten te vullen.
-            // Dit zorgt ervoor dat de lijst direct gevuld is, zelfs voordat de gebruiker een selectie maakt.
-            // De OnSelectedProductChanged methode wordt hier effectief getriggerd door de initiële toewijzing.
-            // Als er producten zijn, selecteer het eerste product om de lijst te initialiseren.
             if (Products.Any())
             {
                 SelectedProduct = Products.First();
             }
             else
             {
-                // Als er geen producten zijn, initialiseer de lijst met alle gekochte producten (geen filter)
                 // Dit is de fallback als de 'Products' lijst leeg is.
                 var allBoughtProducts = _boughtProductsService.Get(null); // Roep aan zonder productId filter
                 foreach (var boughtProduct in allBoughtProducts)
@@ -46,7 +41,6 @@ namespace Grocery.App.ViewModels
 
         partial void OnSelectedProductChanged(Product? oldValue, Product newValue)
         {
-            // Zorg dat de lijst BoughtProductsList met de gegevens die passen bij het geselecteerde product.
             BoughtProductsList.Clear(); // Leeg de huidige lijst
 
             if (newValue != null)
@@ -60,8 +54,6 @@ namespace Grocery.App.ViewModels
             }
             else
             {
-                // Als newValue null is (bijv. als er geen product geselecteerd is),
-                // kun je er ook voor kiezen om alle gekochte producten te tonen
                 // of de lijst leeg te laten. Ik kies hier voor alle producten.
                 var allBoughtProducts = _boughtProductsService.Get(null);
                 foreach (var boughtProduct in allBoughtProducts)
