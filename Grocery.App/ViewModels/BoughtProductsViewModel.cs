@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Grocery.Core.Interfaces.Services;
 using Grocery.Core.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Grocery.App.ViewModels
@@ -22,6 +23,7 @@ namespace Grocery.App.ViewModels
             _boughtProductsService = boughtProductsService;
             Products = new(productService.GetAll());
 
+            Debug.WriteLine("vullen");
             // Vervang comments met functionele code om de lijst bij het opstarten te vullen.
             // Dit zorgt ervoor dat de lijst direct gevuld is, zelfs voordat de gebruiker een selectie maakt.
             // De OnSelectedProductChanged methode wordt hier effectief getriggerd door de initiële toewijzing.
