@@ -56,6 +56,7 @@ namespace Grocery.App.ViewModels
             GroceryLists = new(_groceryListService.GetAll());
             // Zorg ervoor dat de CurrentClient ook wordt ververst mocht deze veranderen (bijv. na logout/login)
             CurrentClient = _clientService.GetCurrentClient();
+            //debug log om te kijken wie de current client is met welke role
             Debug.WriteLine($"Current Client: {CurrentClient?.Name ?? "N/A"}, Role: {CurrentClient?.Role.ToString() ?? "N/A"}");
         }
 

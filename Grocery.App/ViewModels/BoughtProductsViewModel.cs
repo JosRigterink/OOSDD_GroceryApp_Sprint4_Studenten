@@ -23,7 +23,6 @@ namespace Grocery.App.ViewModels
             _boughtProductsService = boughtProductsService;
             Products = new(productService.GetAll());
 
-            Debug.WriteLine("vullen");
             if (Products.Any())
             {
                 SelectedProduct = Products.First();
